@@ -257,6 +257,99 @@ public class RoomObject {
         disappear();
 
     }
+    public void editCustomer() {
+        Scanner sc = new Scanner(System.in);
+        String regexName = "^[A-Za-z]*+$";
+        disappear();
+        System.out.println("Welcome Binh Hu Motels! |");
+        System.out.println("0.Currently Customer    |");
+        System.out.print("1.Check In              |      -->  Input name:  ");
+        name = sc.nextLine();
+
+
+        Pattern patternName = Pattern.compile(regexName);
+        Matcher matcherName = patternName.matcher(name);
+        while (!matcherName.find()) {
+            disappear();
+            System.out.println("Welcome Binh Hu Motels! |");
+            System.out.println("0.Currently Customer    |");
+            System.out.print("1.Check In              |    -->  Please input right Name:  ");
+            name = sc.nextLine();
+            matcherName = patternName.matcher(name);
+        }
+
+
+        String regex = "^\\d{9}$";
+        disappear();
+        System.out.println("Welcome Binh Hu Motels! |");
+        System.out.println("0.Currently Customer    |");
+        System.out.print("1.Check In              |      -->  Input Customer CMND:  ");
+        String CMNDNumber = sc.nextLine();
+
+
+        Pattern pattern1 = Pattern.compile(regex);
+        Matcher matcher1 = pattern1.matcher(CMNDNumber);
+
+        while (!matcher1.find()) {
+            disappear();
+            System.out.println("Welcome Binh Hu Motels! |");
+            System.out.println("0.Currently Customer    |");
+            System.out.print("1.Check In              |      -->  Please input 9 number!  ");
+            CMNDNumber = sc.nextLine();
+
+            matcher1 = pattern1.matcher(CMNDNumber);
+        }
+
+
+        this.CMNDNumber = Integer.parseInt(CMNDNumber);
+
+
+
+
+       
+        disappear();
+        System.out.println("Welcome Binh Hu Motels! |");
+        System.out.println("0.Currently Customer    |");
+        System.out.print("1.Check In              |      -->  Input day:  ");
+        String day = sc.nextLine();
+
+
+        String regexDay = "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$";
+        Pattern patternDay = Pattern.compile(regexDay);
+        Matcher matcherDay = patternDay.matcher(day);
+        while (!matcherDay.find()) {
+            disappear();
+            System.out.println("Welcome Binh Hu Motels! |");
+            System.out.println("0.Currently Customer    |");
+            System.out.print("1.Check In              |  -->  Please input dd/mm/yy or dd-mm-yy:  ");
+            day = sc.nextLine();
+            matcherDay = patternDay.matcher(day);
+        }
+        checkinTime = "";
+        checkinTime += day;
+
+        int hour;
+        do {
+            disappear();
+            System.out.println("Welcome Binh Hu Motels! |");
+            System.out.println("0.Currently Customer    |");
+            System.out.print("1.Check In              |      -->  Input hour from 1 to 23:  ");
+            while (!sc.hasNextInt()) {
+                disappear();
+                System.out.println("Welcome Binh Hu Motels! |");
+                System.out.println("0.Currently Customer    |");
+                System.out.print("1.Check In              |      -->  Please input from 1 to 23:  ");
+                sc.nextInt();
+            }
+            hour = sc.nextInt();
+        } while (hour <= 0 || hour >= 24);
+        sc.nextLine();
+
+
+        checkinTime += " " + hour + "h";
+        disappear();
+
+    }
 
 
 }

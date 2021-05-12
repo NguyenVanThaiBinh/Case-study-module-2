@@ -22,12 +22,11 @@ public class MotelsService {
         motelsOfDataBase.loadFile();
 
     }
+
     public void loadFileHistory() throws IOException {
 
         motelsOfDataBase.loadFileHistory();
     }
-
-
 
 
     public void checkIn() throws IOException, InterruptedException {
@@ -43,10 +42,16 @@ public class MotelsService {
         roomObjectLinkedList.add(roomObject);
         motelsOfDataBase.saveFile();
         roomObject.disappear();
-        System.out.println("                                                WELCOME '"+roomObject.getName()+"' TO BINH HU MOTELS!");
+        System.out.println("                                                WELCOME '" + roomObject.getName() + "' TO BINH HU MOTELS!");
         System.out.println();
-        System.out.println();System.out.println();System.out.println();System.out.println();
-        System.out.println();System.out.println();System.out.println();System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         Thread.sleep(3000);
         roomObject.disappear();
 
@@ -54,7 +59,7 @@ public class MotelsService {
     }
 
     public void addService() throws InterruptedException {
-        if(roomObjectLinkedList.size() == 0){
+        if (roomObjectLinkedList.size() == 0) {
             System.err.println("There is not customer now!");
             System.out.println();
             return;
@@ -69,7 +74,7 @@ public class MotelsService {
                 int choose;
                 String choose1;
                 System.out.println("Input room number:");
-                do{
+                do {
 
 
                     choose1 = new Scanner(System.in).nextLine();
@@ -77,12 +82,12 @@ public class MotelsService {
                     Pattern patternchoose = Pattern.compile(regexchoose);
 
                     Matcher matcherchoose = patternchoose.matcher(choose1);
-                    while(!matcherchoose.find()){
+                    while (!matcherchoose.find()) {
                         System.out.println("Please input right!");
                         choose1 = new Scanner(System.in).nextLine();
                         matcherchoose = patternchoose.matcher(choose1);
                     }
-                    choose =Integer.parseInt(choose1);
+                    choose = Integer.parseInt(choose1);
                     switch (choose) {
                         case 1:
                             object.setMoney(object.getMoney() + 5);
@@ -110,9 +115,16 @@ public class MotelsService {
 
     public void showService() throws InterruptedException {
         System.out.println("                                                Welcome Binh Hu Motels Service!");
-        System.out.println();System.out.println();
-        System.out.println();System.out.println();System.out.println();System.out.println();
-        System.out.println();System.out.println();System.out.println();System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         Thread.sleep(3000);
         RoomObject roomObject = new RoomObject();
         roomObject.disappear();
@@ -122,8 +134,30 @@ public class MotelsService {
         System.out.println("4.Exit");
     }
 
+    public void editCustomer() throws IOException {
+        if (roomObjectLinkedList.size() == 0) {
+            System.err.println("There is not customer now!");
+            System.out.println();
+            return;
+        }
+        int room_number = getRoomNumber();
+        for (RoomObject object : roomObjectLinkedList) {
+            if (object.getRoomNumber() == room_number) {
+                object.editCustomer();
+                motelsOfDataBase.saveFile();
+                System.out.println("Edit successfully!");
+                return;
+            }
+        }
+
+        System.out.println("Can't not find room!");
+        System.out.println("-------------");
+
+
+    }
+
     public void checkOut() throws IOException, ParseException {
-        if(roomObjectLinkedList.size() == 0){
+        if (roomObjectLinkedList.size() == 0) {
             System.err.println("There is not customer now!");
             System.out.println();
             return;
@@ -169,7 +203,7 @@ public class MotelsService {
     }
 
     public void showHistory() throws IOException {
-        if(customerHistory.size() == 0){
+        if (customerHistory.size() == 0) {
             System.err.println("There is not customer now!");
             System.out.println();
             return;
@@ -178,7 +212,7 @@ public class MotelsService {
     }
 
     public void showList() throws IOException {
-        if(roomObjectLinkedList.size() == 0){
+        if (roomObjectLinkedList.size() == 0) {
             System.err.println("There is not customer now!");
             System.out.println();
             return;

@@ -15,6 +15,7 @@ public class MotelsOfDataBase {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader("MotelsFile.csv"));
         String line;
+        int count = 0;
         while ((line = bufferedReader.readLine()) != null) {
             String[] arr = line.split(", ");
 
@@ -22,7 +23,7 @@ public class MotelsOfDataBase {
                 continue;
             }
             try {
-                RoomObject roomObject = new RoomObject(Integer.parseInt(arr[0].trim()), arr[1],
+                RoomObject roomObject = new RoomObject(++count, arr[1],
                         Integer.parseInt(arr[2].trim()), Integer.parseInt(arr[3]), (arr[4].trim())
                         , Integer.parseInt(arr[5].trim()));
                 roomObjectLinkedList.add(roomObject);
@@ -40,6 +41,7 @@ public class MotelsOfDataBase {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader("MotelsHistoryFile.csv"));
         String line;
+        int count = 0;
         while ((line = bufferedReader.readLine()) != null) {
             String[] arr = line.split(", ");
 
@@ -47,7 +49,7 @@ public class MotelsOfDataBase {
                 continue;
             }
             try {
-                RoomObject roomObject = new RoomObject(Integer.parseInt(arr[0].trim()), arr[1],
+                RoomObject roomObject = new RoomObject(++count, arr[1],
                         Integer.parseInt(arr[2].trim()), Integer.parseInt(arr[3]), (arr[4].trim())
                         , (arr[5].trim()), Integer.parseInt(arr[6].trim()));
                 customerHistory.add(roomObject);
@@ -58,8 +60,6 @@ public class MotelsOfDataBase {
         }
         bufferedReader.close();
     }
-
-
 
 
     public void saveFile() throws IOException {

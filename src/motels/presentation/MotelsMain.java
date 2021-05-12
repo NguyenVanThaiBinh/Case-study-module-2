@@ -73,21 +73,28 @@ public class MotelsMain extends Thread{
 
                 motelsService.addService();
                 break;
-            case 4:
+            case 3:
+                try {
+                    motelsService.editCustomer();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case 5:
                 try {
                     motelsService.showHistory();
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
                 break;
-            case 3:
+            case 4:
                 try {
                     motelsService.checkOut();
                 } catch (IOException | ParseException e) {
 
                 }
                 break;
-            case 5:
+            case 6:
                 System.out.println("Bye bye!");
                 break;
             default:
@@ -95,7 +102,7 @@ public class MotelsMain extends Thread{
                 break;
 
         }
-    }while(choose != 5);
+    }while(choose != 6);
 
     }
     public  static  void showMenu(){
@@ -103,9 +110,10 @@ public class MotelsMain extends Thread{
         System.out.println("0.Currently Customer    |");
         System.out.println("1.Check In              |");
         System.out.println("2.Add service           |");
-        System.out.println("3.Check Out             |");
-        System.out.println("4.Show history          |");
-        System.out.println("5.Exit                  |");
+        System.out.println("3.Edit Customer         |");
+        System.out.println("4.Check Out             |");
+        System.out.println("5.Show history          |");
+        System.out.println("6.Exit                  |");
     }
 
 }
